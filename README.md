@@ -1,2 +1,27 @@
-# React_Playlists-Jest
-This is a React app with a list of users and their favorite playlists. This app is also filled with unit tests, using JEST
+# Проект списка пользователей и их любимых плейлистов
+В этом проекте реализован стэйт менеджер - Redux
+Также реализовано тестирование unit тестами и фильтрация данных
+
+## Заупск проекта
+
+```sh
+npm install
+```
+
+### Запуск продакшн версии
+
+```sh
+npm run build
+```
+
+### Запуск версии для разработчика
+
+```sh
+npm run dev
+```
+
+### Запуск юнит тестов
+
+```sh
+npm run test:unit
+```

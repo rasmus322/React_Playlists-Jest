@@ -1,11 +1,14 @@
 import { useParams } from "react-router-dom"
-import { PLAYLISTS } from "../../data"
 import { TPlaylist } from "../../data/interfaces"
 import "./PlaylistInfoPage.css"
+import { useSelector } from "react-redux"
+import { RootState } from "../../store/store"
 
 export function PlaylistInfoPage() {
+  const playlists = useSelector((state: RootState) => state.playlists)
+
   const { playlistId } = useParams()
-  const playlist: TPlaylist = PLAYLISTS[Number(playlistId)]
+  const playlist: TPlaylist = playlists[Number(playlistId)]
 
   if (!playlist) {
     return (

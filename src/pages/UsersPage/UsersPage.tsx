@@ -1,9 +1,11 @@
 import { ChangeEvent } from "react";
-import { USERS } from "../../data";
+import { RootState } from "../../store/store";
+import { useSelector } from "react-redux";
 import "./UsersPage.css";
 import { Link, useSearchParams } from "react-router-dom";
 
 export function UsersPage() {
+	const users = useSelector((state: RootState) => state.users)
 	const [searchParam, setSearchParam] = useSearchParams();
 
 	const handleSearchName = (event: ChangeEvent<HTMLInputElement>): void => {
@@ -13,7 +15,7 @@ export function UsersPage() {
 
 	const searchName = searchParam.get("searchName") || "";
 
-	const filteredUsers = USERS.filter(({ fullName }) =>
+	const filteredUsers = users.filter(({ fullName }) =>
 		fullName.toLowerCase().includes(searchName)
 	);
 

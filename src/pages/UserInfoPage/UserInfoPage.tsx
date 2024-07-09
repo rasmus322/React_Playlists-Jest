@@ -1,10 +1,14 @@
 import { useParams, Link } from "react-router-dom";
-import { USERS, PLAYLISTS } from "../../data";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 import "./UserInfoPage.css";
 
 export function UserInfoPage() {
+	const users = useSelector((state: RootState) => state.users)
+	const playlists = useSelector((state: RootState) => state.playlists) 
+
 	const { userId } = useParams();
-	const user = USERS[Number(userId)];
+	const user = users[Number(userId)];
 
 	if (!user) {
 		return (
@@ -31,7 +35,7 @@ export function UserInfoPage() {
 				{ user.playlist && (
 					<p>
 						playlist: 
-						<Link to={`/playlists/${user.playlist.id}`}> { PLAYLISTS[user.playlist.id].name } </Link>
+						<Link to={`/playlists/${user.playlist.id}`}> { playlists[user.playlist.id].name } </Link>
 					</p>
 				) }
 				

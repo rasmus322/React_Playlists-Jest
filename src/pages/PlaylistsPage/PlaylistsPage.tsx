@@ -1,9 +1,12 @@
 import { Link, useSearchParams } from "react-router-dom"
-import { PLAYLISTS } from "../../data"
+import { RootState } from "../../store/store"
+import { useSelector } from "react-redux"
 import "./PlaylistsPage.css"
 import { ChangeEvent, useEffect, useState } from "react"
 
 export function PlaylistsPage() {
+  const playlists = useSelector((state: RootState) => state.playlists)
+
   const [searchParam, setSearchParam] = useSearchParams()
   const [genre, setGenre] = useState<string>("")
   const [name, setName] = useState<string>("")
@@ -29,7 +32,7 @@ export function PlaylistsPage() {
     }
   }, [searchParam])
 
-  const filteredPlaylists = PLAYLISTS.filter((playlist) => {
+  const filteredPlaylists = playlists.filter((playlist) => {
     return (
       playlist.genre.toLowerCase().includes(genre.toLowerCase()) &&
       playlist.name.toLowerCase().includes(name.toLowerCase()) &&
